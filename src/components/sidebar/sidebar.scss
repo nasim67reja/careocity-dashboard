@@ -29,15 +29,15 @@
         font-size: 1rem;
         font-weight: bold;
         color: #999;
-        margin-top: 15px;
-        margin-bottom: 5px;
+        margin: 1.5rem 0 0.5rem 0;
       }
 
       li {
         display: flex;
         align-items: center;
-        padding: 5px;
+        padding: 0.5rem;
         cursor: pointer;
+        gap: 1rem;
 
         &:hover {
           background-color: #ece8ff;
@@ -49,11 +49,29 @@
         }
 
         span {
-          font-size: 13px;
+          font-size: 1.3rem;
           font-weight: 600;
           color: #888;
-          margin-left: 10px;
         }
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 2rem;
+    .colorOption {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 5px;
+      border: 1px solid #7451f8;
+      cursor: pointer;
+      &:nth-child(1) {
+        background-color: whitesmoke;
+      }
+      &:nth-child(2) {
+        background-color: #333;
       }
     }
   }
