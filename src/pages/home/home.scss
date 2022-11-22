@@ -1,3 +1,6 @@
 .home {
-  border: 2px solid black;
+  display: flex;
+  .homeContainer {
+    flex: 6;
+  }
 }
