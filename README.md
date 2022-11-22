@@ -1,4 +1,4 @@
-# NetFlix Clone
+# React Admin Dashboard
 
 ## Table of contents
 

@@ -1,10 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import Home from "./pages/home/Home";
 
 const App = () => {
   return (
     <>
-      <div>hello world</div>{" "}
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </>
   );
 };
