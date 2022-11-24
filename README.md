@@ -1,5 +1,31 @@
 # React Admin Dashboard
 
+This is an admin dashboard of my careocity e-commerce app where an admin can CRUD users and Products. He can see all the activity of careocity apps and do all the operations here
+
+### Links
+
+- Solution URL: [Github Repo](https://github.com/nasim67reja/manage.github.io)
+
+- Live Site URL: [Live link](https://nasim67reja.github.io/react-admin-dashboard/)
+
+### The challenge
+
+Users should be able to:
+
+- Only admin can access this application
+- View the optimal layout for the site depending on their device's screen size
+- See hover states for all interactive elements on the page
+
+  ### Built with
+
+- Reactjs
+- Material UI
+- Reacharts
+- Flexbox
+- CSS Grid
+- JavaScript
+- Desktop-first workflow
+
 ## Table of contents
 
 - [The challenge](#the-challenge)
@@ -10,43 +36,9 @@
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
-### The challenge
-
-Users should be able to:
-
-- View the optimal layout for the site depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Receive an error message when the newsletter sign up `form` is submitted if:
-  - The `input` field is empty
-  - The email address is not formatted correctly
-
 ### Screenshot
 
 ![](images/Screenshot.png)
-
-### Links
-
-- Solution URL: [Github Repo](https://github.com/nasim67reja/manage.github.io)
-- Live Site URL: [Live link](https://your-live-site-url.com)
-
-### Built with
-
-- Reactjs
-- Tailwind CSS
-- Flexbox
-- CSS Grid
-- JavaScript
-- Desktop-first workflow
-
-- The API I used in this project
-
-```JavaScript
-const requests = {
-  requestPopular: `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`,
-  requestTopRated: `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`,
-  requestUpComing: `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1`,
-};
-```
 
 ### What I learned
 
