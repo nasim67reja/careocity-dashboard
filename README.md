@@ -20,6 +20,7 @@ Users should be able to:
 
 - Reactjs
 - Material UI
+- Sass
 - Reacharts
 - Flexbox
 - CSS Grid
