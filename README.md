@@ -4,7 +4,7 @@ This is an admin dashboard of my careocity e-commerce app where an admin can CRU
 
 ### Links
 
-- Solution URL: [Github Repo](https://github.com/nasim67reja/manage.github.io)
+- Solution URL: [Github Repo](https://github.com/nasim67reja/react-admin-dashboard)
 
 - Live Site URL: [Live link](https://nasim67reja.github.io/react-admin-dashboard/)
 
