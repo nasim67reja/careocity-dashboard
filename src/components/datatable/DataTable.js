@@ -1,10 +1,80 @@
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
 import "./datatable.scss";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { URL } from "../../App";
 
 const DataTable = () => {
+  const users = useSelector((state) => state.Users.users);
+  const newUsers = users?.map((el, i) => {
+    return { ...el, newId: i + 1 };
+  });
+
+  const userColumnsT = [
+    {
+      field: "newId",
+      headerName: "ID",
+      width: 70,
+    },
+    {
+      field: "user",
+      headerName: "User",
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <div className="cellWithImg">
+            <img
+              className="cellImg"
+              crossOrigin="anonymous"
+              src={`${URL}/img/users/${params.row.photo}`}
+              alt="avatar"
+            />
+            {params.row.name}
+          </div>
+        );
+      },
+    },
+    {
+      field: "email",
+      headerName: "Email",
+      width: 200,
+    },
+    {
+      field: "role",
+      headerName: "Role",
+      width: 100,
+    },
+    {
+      field: "active",
+      headerName: "Status",
+      width: 100,
+      renderCell: (params) => {
+        return <div>{params.row.active ? "Active" : "Deactive"}</div>;
+      },
+    },
+
+    // {
+    //   field: "age",
+    //   headerName: "Age",
+    //   width: 80,
+    // },
+    // {
+    //   field: "status",
+    //   headerName: "Status",
+    //   width: 120,
+    //   renderCell: (params) => {
+    //     return (
+    //       <div className={`cellWithStatus ${params.row.status}`}>
+    //         {params.row.status}
+    //       </div>
+    //     );
+    //   },
+    // },
+  ];
+
+  //temporary data
+
   const actionColumn = [
     {
       field: "action",
@@ -24,14 +94,16 @@ const DataTable = () => {
   ];
   return (
     <div className="datatable">
-      <DataGrid
-        className="datagrid"
-        rows={userRows}
-        columns={userColumns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        checkboxSelection
-      />
+      {users && (
+        <DataGrid
+          className="datagrid"
+          rows={newUsers}
+          columns={userColumnsT.concat(actionColumn)}
+          pageSize={9}
+          rowsPerPageOptions={[9]}
+          checkboxSelection
+        />
+      )}
     </div>
   );
 };
