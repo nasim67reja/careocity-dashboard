@@ -13,7 +13,9 @@ import { userActions } from "./store/Users";
 
 axios.defaults.withCredentials = true; //it's for getting and storing cookies in browser for future request
 
-export const URL = "https://cryptic-anchorage-43168.herokuapp.com";
+// export const URL = "https://cryptic-anchorage-43168.herokuapp.com";
+// export const URL = "http://127.0.0.1:8000";
+export const URL = "https://e-commerceapi.up.railway.app";
 
 const App = () => {
   const dispatch = useDispatch();

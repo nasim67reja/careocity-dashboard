@@ -50,30 +50,18 @@ const DataTable = () => {
       headerName: "Status",
       width: 100,
       renderCell: (params) => {
-        return <div>{params.row.active ? "Active" : "Deactive"}</div>;
+        return (
+          <div
+            className={`status status-${
+              params.row.active ? "active" : "deactive"
+            }`}
+          >
+            {params.row.active ? "Active" : "Deactive"}
+          </div>
+        );
       },
     },
-
-    // {
-    //   field: "age",
-    //   headerName: "Age",
-    //   width: 80,
-    // },
-    // {
-    //   field: "status",
-    //   headerName: "Status",
-    //   width: 120,
-    //   renderCell: (params) => {
-    //     return (
-    //       <div className={`cellWithStatus ${params.row.status}`}>
-    //         {params.row.status}
-    //       </div>
-    //     );
-    //   },
-    // },
   ];
-
-  //temporary data
 
   const actionColumn = [
     {
@@ -92,6 +80,7 @@ const DataTable = () => {
       },
     },
   ];
+
   return (
     <div className="datatable">
       {users && (
