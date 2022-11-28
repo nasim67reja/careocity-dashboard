@@ -10,12 +10,14 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { productsActions } from "./store/allProducts";
 import { userActions } from "./store/Users";
+import DataTable from "./components/datatable/DataTable";
+import ProductDataTab from "./components/datatable/ProductDataTab";
 
 axios.defaults.withCredentials = true; //it's for getting and storing cookies in browser for future request
 
 // export const URL = "https://cryptic-anchorage-43168.herokuapp.com";
-// export const URL = "http://127.0.0.1:8000";
-export const URL = "https://e-commerceapi.up.railway.app";
+export const URL = "http://127.0.0.1:8000";
+// export const URL = "https://e-commerceapi.up.railway.app";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -56,7 +58,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="users">
-            <Route index element={<List />} />
+            <Route index element={<List dataTable={<DataTable />} />} />
             <Route path=":userId" element={<Single />} />
             <Route
               path="new"
@@ -64,7 +66,7 @@ const App = () => {
             />
           </Route>
           <Route path="products">
-            <Route index element={<List />} />
+            <Route index element={<List dataTable={<ProductDataTab />} />} />
             <Route path=":productId" element={<Single />} />
             <Route
               path="new"
