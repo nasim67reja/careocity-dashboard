@@ -21,8 +21,6 @@ const ProductDataTab = () => {
     return { ...el, newId: i + 1 };
   });
 
-  console.log(newProudcts);
-
   const userColumnsT = [
     {
       field: "newId",
@@ -76,7 +74,7 @@ const ProductDataTab = () => {
         return (
           <div className="cellAction">
             <Link
-              to={`/users/${params.row.id}`}
+              to={`/products/${params.row.id}`}
               style={{ textDecoration: "none" }}
             >
               <div className="viewButton">View</div>

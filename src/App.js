@@ -12,12 +12,14 @@ import { productsActions } from "./store/allProducts";
 import { userActions } from "./store/Users";
 import DataTable from "./components/datatable/DataTable";
 import ProductDataTab from "./components/datatable/ProductDataTab";
+import UserInfo from "./components/info/UserInfo";
+import ProductInfo from "./components/info/ProductInfo";
 
 axios.defaults.withCredentials = true; //it's for getting and storing cookies in browser for future request
 
 // export const URL = "https://cryptic-anchorage-43168.herokuapp.com";
-export const URL = "http://127.0.0.1:8000";
-// export const URL = "https://e-commerceapi.up.railway.app";
+// export const URL = "http://127.0.0.1:8000";
+export const URL = "https://e-commerceapi.up.railway.app";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -59,7 +61,10 @@ const App = () => {
           <Route path="login" element={<Login />} />
           <Route path="users">
             <Route index element={<List dataTable={<DataTable />} />} />
-            <Route path=":userId" element={<Single />} />
+            <Route
+              path=":userId"
+              element={<Single userProp={<UserInfo />} />}
+            />
             <Route
               path="new"
               element={<New inputs={userInputs} title="Add New User" />}
@@ -67,7 +72,10 @@ const App = () => {
           </Route>
           <Route path="products">
             <Route index element={<List dataTable={<ProductDataTab />} />} />
-            <Route path=":productId" element={<Single />} />
+            <Route
+              path=":productId"
+              element={<Single userProp={<ProductInfo />} />}
+            />
             <Route
               path="new"
               element={<New inputs={productInputs} title="Add New Product" />}
