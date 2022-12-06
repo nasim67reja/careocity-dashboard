@@ -2,7 +2,7 @@
   flex: 1;
   -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
-  padding: 20px;
+  padding: 2rem;
   position: relative;
 
   .editButton {
@@ -19,7 +19,7 @@
 
   .item {
     display: flex;
-    gap: 20px;
+    gap: 2rem;
 
     .itemImg {
       width: 100px;

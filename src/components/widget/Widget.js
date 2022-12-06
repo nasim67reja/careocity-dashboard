@@ -6,8 +6,9 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import { Link } from "react-router-dom";
 
-const Widget = ({ type }) => {
+const Widget = ({ type, total }) => {
   let data;
 
   //temporary
@@ -85,7 +86,7 @@ const Widget = ({ type }) => {
   }
   return (
     <div className="widget">
-      <div className="left">
+      {/* <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
           {data.isMoney && "$"} {amount}
@@ -98,7 +99,32 @@ const Widget = ({ type }) => {
           {diff} %
         </div>
         {data.icon}
+      </div> */}
+
+      <div className="row row-top">
+        <span className="title">{data.title}</span>
+        <PersonOutlinedIcon
+          className="icon"
+          // style={{
+          //   color: "crimson",
+          //   backgroundColor: "rgba(255, 0, 0, 0.2)",
+          // }}
+        />
       </div>
+      <div className="row row-bottom">
+        <span className="counter">
+          {/* {data.isMoney && "$"} {amount} */}
+
+          {total}
+        </span>
+        <div className="percentage positive">
+          <KeyboardArrowUpIcon />
+          {diff} %
+        </div>
+      </div>
+      <Link to="/" className="widget-link">
+        see all users
+      </Link>
     </div>
   );
 };

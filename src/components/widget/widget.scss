@@ -1,36 +1,37 @@
 .widget {
   display: flex;
   flex: 1;
-  justify-content: space-between;
-  padding: 1rem;
+  // justify-content: space-between;
+  flex-direction: column;
+  padding: 1rem 2rem;
   -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
   border-radius: 1rem;
   height: 10rem;
-
-  .left,
-  .right {
+  .row {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-
+  }
+  .row-top {
+    margin-bottom: 8px;
     .title {
       font-weight: bold;
       font-size: 1.4rem;
       color: rgb(160, 160, 160);
     }
-
+    .icon {
+      font-size: 2rem;
+      color: crimson;
+      padding: 2px;
+      border-radius: 5px;
+      background-color: rgba(255, 0, 0, 0.2);
+    }
+  }
+  .row-bottom {
     .counter {
       font-size: 2.8rem;
       font-weight: 300;
     }
-
-    .link {
-      width: max-content;
-      font-size: 1.2rem;
-      border-bottom: 1px solid gray;
-    }
-
     .percentage {
       display: flex;
       align-items: center;
@@ -43,11 +44,68 @@
         color: red;
       }
     }
-    .icon {
-      font-size: 2rem;
-      padding: 5px;
-      border-radius: 5px;
-      align-self: flex-end;
-    }
+  }
+  .widget-link {
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.4rem;
   }
 }
+
+// .widget {
+//   display: flex;
+//   flex: 1;
+//   justify-content: space-between;
+//   padding: 1rem;
+//   -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+//   box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+//   border-radius: 1rem;
+//   height: 10rem;
+
+//   .left {
+//     box-shadow: none;
+//   }
+//   .left,
+//   .right {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+
+//     .title {
+//       font-weight: bold;
+//       font-size: 1.4rem;
+//       color: rgb(160, 160, 160);
+//     }
+
+//     .counter {
+//       font-size: 2.8rem;
+//       font-weight: 300;
+//     }
+
+//     .link {
+//       width: max-content;
+//       font-size: 1.2rem;
+//       border-bottom: 1px solid gray;
+//     }
+
+//     .percentage {
+//       display: flex;
+//       align-items: center;
+//       font-size: 1.4rem;
+
+//       &.positive {
+//         color: green;
+//       }
+//       &.negative {
+//         color: red;
+//       }
+//     }
+//     .icon {
+//       font-size: 2rem;
+//       padding: 5px;
+//       border-radius: 5px;
+//       align-self: flex-end;
+//     }
+//   }
+// }
