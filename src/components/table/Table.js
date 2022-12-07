@@ -6,13 +6,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useSelector } from "react-redux";
 import { URL } from "../../App";
 import { truncateString } from "../Other/Reuse";
 
-const List = () => {
-  const orders = useSelector((state) => state.Orders.orders);
-
+const List = ({ userOrder }) => {
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -28,8 +25,8 @@ const List = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {orders &&
-            orders.map((order) => (
+          {userOrder &&
+            userOrder.map((order) => (
               <TableRow key={order._id}>
                 <TableCell className="tableCell">
                   {truncateString(order._id, 10)}
@@ -50,8 +47,9 @@ const List = () => {
                 <TableCell className="tableCell">{order.price}</TableCell>
                 <TableCell className="tableCell">Online</TableCell>
                 <TableCell className="tableCell">
-                  {/* <span className={`status ${row.status}`}>{row.status}</span> */}
-                  <span>Pending</span>
+                  <span className={`status ${order.status}`}>
+                    {order.status}
+                  </span>
                 </TableCell>
               </TableRow>
             ))}

@@ -19,11 +19,15 @@
     padding: 0.5rem;
     border-radius: 0.5rem;
 
-    &.Approved {
+    &.approved {
+      color: rgb(62, 197, 62);
+      background-color: rgba(3, 116, 3, 0.151);
+    }
+    &.completed {
       color: green;
       background-color: rgba(0, 128, 0, 0.151);
     }
-    &.Pending {
+    &.pending {
       color: goldenrod;
       background-color: rgba(189, 189, 3, 0.103);
     }

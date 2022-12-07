@@ -8,7 +8,7 @@ const UserInfo = () => {
   const [user, setUser] = useState();
   const params = useParams();
 
-  const getUsers = useCallback(async () => {
+  const getUser = useCallback(async () => {
     try {
       const { data } = await axios.get(`${URL}/api/v1/users/${params.userId}`);
       setUser(data.data.data);
@@ -18,9 +18,9 @@ const UserInfo = () => {
   }, [params.userId]);
 
   useEffect(() => {
-    getUsers();
-  }, [getUsers]);
-  console.log(user);
+    getUser();
+  }, [getUser]);
+
   return (
     <div className="left">
       <div className="editButton">Edit</div>

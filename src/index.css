@@ -24,4 +24,11 @@ body {
   /* font-family: "Rubik", sans-serif; */
   font-family: "Nunito", sans-serif;
   font-size: 1.6rem;
+  color: #555;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

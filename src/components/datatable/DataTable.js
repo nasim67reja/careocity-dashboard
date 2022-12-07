@@ -20,7 +20,7 @@ const DataTable = () => {
     {
       field: "user",
       headerName: "User",
-      width: 200,
+      width: 220,
       renderCell: (params) => {
         return (
           <div className="cellWithImg">
@@ -38,7 +38,7 @@ const DataTable = () => {
     {
       field: "email",
       headerName: "Email",
-      width: 200,
+      width: 300,
     },
     {
       field: "role",
@@ -48,7 +48,7 @@ const DataTable = () => {
     {
       field: "active",
       headerName: "Status",
-      width: 100,
+      width: 120,
       renderCell: (params) => {
         return (
           <div

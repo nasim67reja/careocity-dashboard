@@ -26,12 +26,12 @@ const ProductDataTab = () => {
     {
       field: "newId",
       headerName: "ID",
-      width: 70,
+      width: 80,
     },
     {
       field: "product",
       headerName: "Product",
-      width: 300,
+      width: 360,
       renderCell: (params) => {
         return (
           <div className="cellWithImg">
@@ -49,7 +49,7 @@ const ProductDataTab = () => {
     {
       field: "prices",
       headerName: "Price",
-      width: 90,
+      width: 120,
       renderCell: (params) => {
         return <div className="price">$ {params.row.price}</div>;
       },
@@ -57,12 +57,12 @@ const ProductDataTab = () => {
     {
       field: "ratingsAverage",
       headerName: "Ratings",
-      width: 80,
+      width: 110,
     },
     {
       field: "categories",
       headerName: "Categories",
-      width: 100,
+      width: 160,
     },
   ];
 
