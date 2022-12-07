@@ -15,6 +15,7 @@ import DataTable from "./components/datatable/DataTable";
 import ProductDataTab from "./components/datatable/ProductDataTab";
 import UserInfo from "./components/info/UserInfo";
 import ProductInfo from "./components/info/ProductInfo";
+import OrderDataTabel from "./components/datatable/OrderDataTabel";
 
 axios.defaults.withCredentials = true; //it's for getting and storing cookies in browser for future request
 
@@ -71,6 +72,26 @@ const App = () => {
             <Route
               path="new"
               element={<New inputs={productInputs} title="Add New Product" />}
+            />
+          </Route>
+          <Route path="orders">
+            <Route
+              index
+              element={
+                <List dataTable={<OrderDataTabel statusProp="pending" />} />
+              }
+            />
+            <Route
+              path=":orderId"
+              element={<Single userProp={<ProductInfo />} />}
+            />
+          </Route>
+          <Route path="delivery">
+            <Route
+              index
+              element={
+                <List dataTable={<OrderDataTabel statusProp="approved" />} />
+              }
             />
           </Route>
         </Route>

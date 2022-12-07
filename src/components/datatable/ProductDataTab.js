@@ -5,14 +5,15 @@ import { Link } from "react-router-dom";
 import "./productDataTab.scss";
 import "./datatable.scss";
 import { URL } from "../../App";
+import { truncateString } from "../Other/Reuse";
 
-export const truncateString = (str, num) => {
-  if (str?.length > num) {
-    return str.slice(0, num) + "...";
-  } else {
-    return str;
-  }
-};
+// export const truncateString = (str, num) => {
+//   if (str?.length > num) {
+//     return str.slice(0, num) + "...";
+//   } else {
+//     return str;
+//   }
+// };
 
 const ProductDataTab = () => {
   const Products = useSelector((state) => state.allProducts.allProducts);

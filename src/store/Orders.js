@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialUserState = {
   orders: null,
+  pendingOrder: null,
   order: null,
 };
 
@@ -14,6 +15,9 @@ const orderSlice = createSlice({
     },
     storeOrder(state, action) {
       state.order = action.payload;
+    },
+    storePendingOrder(state, action) {
+      state.pendingOrder = action.payload;
     },
   },
 });
