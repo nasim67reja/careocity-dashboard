@@ -21,10 +21,24 @@
     }
     .icon {
       font-size: 2rem;
-      color: crimson;
       padding: 2px;
       border-radius: 5px;
+    }
+    .icon-user {
+      color: crimson;
       background-color: rgba(255, 0, 0, 0.2);
+    }
+    .icon-order {
+      background-color: rgba(218, 165, 32, 0.2);
+      color: goldenrod;
+    }
+    .icon-earning {
+      background-color: rgba(0, 128, 0, 0.2);
+      color: green;
+    }
+    .icon-balance {
+      background-color: rgba(128, 0, 128, 0.2);
+      color: purple;
     }
   }
   .row-bottom {
@@ -47,6 +61,7 @@
   }
   .widget-link {
     text-decoration: none;
+    color: rgb(173, 117, 226);
     display: inline-block;
     text-align: center;
     font-size: 1.4rem;

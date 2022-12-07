@@ -10,14 +10,14 @@ import "./home.scss";
 
 const Home = () => {
   const users = useSelector((state) => state.Users.users);
-  const user = useSelector((state) => state.Users.user);
+  // const user = useSelector((state) => state.Users.user);
   const Orders = useSelector((state) => state.Orders.orders);
 
   const Earnings =
     Orders &&
     Math.round(Orders.map((el) => el.price).reduce((acc, cur) => acc + cur));
 
-  const products = useSelector((state) => state.allProducts.allProducts);
+  // const products = useSelector((state) => state.allProducts.allProducts);
 
   return (
     <div className="home">
@@ -25,9 +25,9 @@ const Home = () => {
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">
-          <Widget type="user" total={users?.length} />
-          <Widget type="order" total={Orders?.length} />
-          <Widget type="earning" total={Earnings} />
+          <Widget type="users" total={users?.length} />
+          <Widget type="orders" total={Orders?.length} />
+          <Widget type="earnings" total={Earnings} />
           <Widget type="balance" total={Earnings} />
         </div>
         <div className="charts">
