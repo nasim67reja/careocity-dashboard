@@ -8,6 +8,7 @@ const Loader = () => {
       style={{
         gap: "0.3rem",
         fontSize: "1.2rem",
+        height: "100%",
       }}
     >
       <Oval
