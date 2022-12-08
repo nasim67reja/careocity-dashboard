@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { overlayActions } from "../../store/Ovarlay";
 
@@ -7,6 +8,11 @@ const Backdrop = () => {
   const backdropIsVisible = useSelector(
     (state) => state.Ovarlay.backdropVisible
   );
+
+  useEffect(() => {
+    if (backdropIsVisible) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "unset";
+  }, [backdropIsVisible]);
 
   return (
     <>

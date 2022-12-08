@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialUserState = {
   backdropVisible: false,
+  updateFormIsVisible: false,
 };
 
 const ovarlaySlice = createSlice({
@@ -10,6 +11,9 @@ const ovarlaySlice = createSlice({
   reducers: {
     backdropVisible(state, action) {
       state.backdropVisible = action.payload;
+    },
+    updateFormVisiblity(state, action) {
+      state.updateFormIsVisible = action.payload;
     },
   },
 });
