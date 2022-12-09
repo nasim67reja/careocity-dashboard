@@ -7,6 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { URL } from "../../App";
 import { useDispatch, useSelector } from "react-redux";
 import { overlayActions } from "../../store/Ovarlay";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ProfilePic = () => {
   const curUser = useSelector((state) => state.Users.curUser);
@@ -18,15 +19,15 @@ const ProfilePic = () => {
   const formSubmissionHandler = async (event) => {
     event.preventDefault();
 
-    const formData = new FormData();
-    formData.append("photo", userPhoto.photo);
-    try {
-      await axios.patch(`${URL}/api/v1/users/updateMe`, formData);
-      document.location.reload();
-    } catch (error) {
-      console.log(`error: `, error);
-      // setError(error.response.data.message);
-    }
+    // const formData = new FormData();
+    // formData.append("photo", userPhoto.photo);
+    // try {
+    //   await axios.patch(`${URL}/api/v1/users/updateMe`, formData);
+    //   document.location.reload();
+    // } catch (error) {
+    //   console.log(`error: `, error);
+    //   // setError(error.response.data.message);
+    // }
   };
 
   return (
@@ -60,27 +61,68 @@ const ProfilePic = () => {
   );
 };
 
-const UserName = () => {
+const UserName = ({ name }) => {
   const [inputIsVisible, setInputIsVisible] = useState(false);
   const curUser = useSelector((state) => state.Users.curUser);
+  console.log(curUser);
+  const [enteredValue, setEnteredValue] = useState("");
+  const [result, setResult] = useState("");
+  const params = useParams();
 
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
+  const updateValue = async () => {
+    try {
+      if (name === "Name")
+        await axios.patch(`${URL}/api/v1/users/${params.userId}`, {
+          name: enteredValue,
+        });
+      else if (name === "Email")
+        await axios.patch(`${URL}/api/v1/users/${params.userId}`, {
+          email: enteredValue,
+        });
+      setResult("Successfully Update ✔");
+      setTimeout(() => {
+        setResult("");
+      }, 4000);
+    } catch (error) {
+      console.log(`error: `, error);
+      setResult("Something wrong 😢");
+      setTimeout(() => {
+        setResult("");
+      }, 4000);
+    }
+  };
+  const formSubmissionHandler = (event) => {
+    event.preventDefault();
+    updateValue();
   };
 
   return (
-    <form onSubmit={formSubmitHandler}>
+    <form onSubmit={formSubmissionHandler}>
       {!inputIsVisible && (
         <div className="name-input flex-center">
-          <label>Name :</label>
-          <span>{curUser?.name}</span>
+          <label>{name} :</label>
+          <span>{name === "Name" ? curUser?.name : curUser?.email}</span>
           <button onClick={() => setInputIsVisible(true)}>Edit</button>
         </div>
       )}
       {inputIsVisible && (
         <div className="input-box">
-          <input type="text" placeholder={curUser?.name} />
-          <button type="submit">Update</button>
+          <input
+            type="text"
+            placeholder={name === "Name" ? curUser?.name : curUser?.email}
+            onChange={(e) => setEnteredValue(e.target.value)}
+            value={enteredValue}
+          />
+          <button type="submit" className="submit">
+            Update
+          </button>
+          {result && (
+            <div
+              style={{ color: "green", fontSize: "1.2rem", marginTop: "5px" }}
+            >
+              {result}
+            </div>
+          )}
         </div>
       )}
     </form>
@@ -89,16 +131,42 @@ const UserName = () => {
 
 const UserRole = ({ name, first, second }) => {
   const [checkedValue, setCheckedValue] = useState();
+  const [result, setResult] = useState("");
+
+  const params = useParams();
+
   const changeHandler = (e) => {
     setCheckedValue(e.target.value);
   };
 
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
-    console.log(checkedValue);
+  const updateValue = async () => {
+    try {
+      if (name === "Role")
+        await axios.patch(`${URL}/api/v1/users/${params.userId}`, {
+          role: checkedValue,
+        });
+      else if (name === "Status")
+        await axios.patch(`${URL}/api/v1/users/${params.userId}`, {
+          active: `${checkedValue === "Active" ? true : false}`,
+        });
+      setResult("Successfully Update ✔");
+      setTimeout(() => {
+        setResult("");
+      }, 4000);
+    } catch (error) {
+      console.log(`error: `, error);
+      setResult("Something wrong 😢");
+      setTimeout(() => {
+        setResult("");
+      }, 4000);
+    }
+  };
+  const formSubmissionHandler = (event) => {
+    event.preventDefault();
+    updateValue();
   };
   return (
-    <form onSubmit={formSubmitHandler}>
+    <form onSubmit={formSubmissionHandler}>
       <div className="flex-center role-box">
         <div className="title">{name} :</div>
         <div className="btn-group" onChange={changeHandler}>
@@ -114,6 +182,11 @@ const UserRole = ({ name, first, second }) => {
         <button type="submit" className="update">
           Update
         </button>
+        {result && (
+          <div style={{ color: "green", fontSize: "1rem", marginTop: "5px" }}>
+            {result}
+          </div>
+        )}
       </div>
     </form>
   );
@@ -121,9 +194,36 @@ const UserRole = ({ name, first, second }) => {
 
 const UpdateForm = () => {
   const dispatch = useDispatch();
+  const [result, setResult] = useState("");
+  const params = useParams();
+  const navigate = useNavigate();
+
   const updateFormIsVisible = useSelector(
     (state) => state.Ovarlay.updateFormIsVisible
   );
+
+  const DeleteUser = async () => {
+    try {
+      await axios.delete(`${URL}/api/v1/users/${params.userId}`);
+
+      setResult("Delete user Successfully ✔");
+      setTimeout(() => {
+        setResult("");
+        navigate("/users");
+        window.location.reload();
+      }, 4000);
+    } catch (error) {
+      console.log(`error: `, error);
+      setResult("Something wrong 😢");
+      setTimeout(() => {
+        setResult("");
+      }, 4000);
+    }
+  };
+
+  const userDeleteHandler = () => {
+    DeleteUser();
+  };
   return (
     <>
       {updateFormIsVisible && (
@@ -139,10 +239,18 @@ const UpdateForm = () => {
             <ProfilePic />
           </div>
           <div className="right-col">
-            <UserName />
-            <UserRole name="Role" first="User" second="Admin" />
+            <UserName name="Name" />
+            <UserName name="Email" />
+            <UserRole name="Role" first="user" second="admin" />
             <UserRole name="Status" first="Active" second="Deactive" />
-            <button>delete user</button>
+            <button className="submit" onClick={userDeleteHandler}>
+              Delete User Permanently
+            </button>
+            {result && (
+              <div style={{ position: "absolute", bottom: "15%" }}>
+                {result}
+              </div>
+            )}
           </div>
         </div>
       )}

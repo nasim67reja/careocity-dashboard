@@ -56,6 +56,9 @@
   }
   .right-col {
     // border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     flex: 1;
     form {
       .update {
@@ -69,6 +72,7 @@
         label {
           color: gray;
           font-weight: bold;
+          font-size: 1.8rem;
         }
         span {
           font-size: 1.4rem;
@@ -86,19 +90,11 @@
         input {
           outline: none;
           border: 1px solid gray;
-          padding: 7px 1rem;
-          margin-right: 1rem;
+          padding: 1rem;
+          margin-right: 1.5rem;
           border-radius: 5px;
           color: #888;
-          font-size: 1.2rem;
-        }
-        button {
-          border: none;
-          border-radius: 5px;
-          background-color: blueviolet;
-          color: #fff;
-          padding: 8px 1rem;
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
       }
     }
@@ -106,17 +102,17 @@
       justify-content: start;
       gap: 2rem;
       color: #888;
-      margin: 1rem 0;
       .title {
         color: gray;
         font-weight: bold;
+        font-size: 1.8rem;
       }
       .btn-group {
         display: flex;
         gap: 1.5rem;
         label {
           margin-left: 5px;
-          font-size: 1.3rem;
+          font-size: 1.4rem;
         }
       }
     }

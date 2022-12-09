@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialUserState = {
-  backdropVisible: true,
-  updateFormIsVisible: true,
+  backdropVisible: false,
+  updateFormIsVisible: false,
 };
 
 const ovarlaySlice = createSlice({
