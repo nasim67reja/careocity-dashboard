@@ -55,7 +55,70 @@
     }
   }
   .right-col {
-    border: 2px solid black;
+    // border: 2px solid black;
     flex: 1;
+    form {
+      .update {
+        background-color: transparent;
+        border: none;
+        color: blueviolet;
+      }
+      .name-input {
+        justify-content: start;
+        gap: 1rem;
+        label {
+          color: gray;
+          font-weight: bold;
+        }
+        span {
+          font-size: 1.4rem;
+          color: #888;
+        }
+        button {
+          background-color: transparent;
+          border: none;
+          color: blueviolet;
+          cursor: pointer;
+          font-size: 1.1rem;
+        }
+      }
+      .input-box {
+        input {
+          outline: none;
+          border: 1px solid gray;
+          padding: 7px 1rem;
+          margin-right: 1rem;
+          border-radius: 5px;
+          color: #888;
+          font-size: 1.2rem;
+        }
+        button {
+          border: none;
+          border-radius: 5px;
+          background-color: blueviolet;
+          color: #fff;
+          padding: 8px 1rem;
+          font-size: 1.2rem;
+        }
+      }
+    }
+    .role-box {
+      justify-content: start;
+      gap: 2rem;
+      color: #888;
+      margin: 1rem 0;
+      .title {
+        color: gray;
+        font-weight: bold;
+      }
+      .btn-group {
+        display: flex;
+        gap: 1.5rem;
+        label {
+          margin-left: 5px;
+          font-size: 1.3rem;
+        }
+      }
+    }
   }
 }

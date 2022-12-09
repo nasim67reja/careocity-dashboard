@@ -29,6 +29,7 @@ const Backdrop = () => {
           }}
           onClick={() => {
             dispatch(overlayActions.backdropVisible(false));
+            dispatch(overlayActions.updateFormVisiblity(false));
           }}
         ></div>
       )}

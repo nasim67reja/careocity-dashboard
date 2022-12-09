@@ -60,6 +60,65 @@ const ProfilePic = () => {
   );
 };
 
+const UserName = () => {
+  const [inputIsVisible, setInputIsVisible] = useState(false);
+  const curUser = useSelector((state) => state.Users.curUser);
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <form onSubmit={formSubmitHandler}>
+      {!inputIsVisible && (
+        <div className="name-input flex-center">
+          <label>Name :</label>
+          <span>{curUser?.name}</span>
+          <button onClick={() => setInputIsVisible(true)}>Edit</button>
+        </div>
+      )}
+      {inputIsVisible && (
+        <div className="input-box">
+          <input type="text" placeholder={curUser?.name} />
+          <button type="submit">Update</button>
+        </div>
+      )}
+    </form>
+  );
+};
+
+const UserRole = ({ name, first, second }) => {
+  const [checkedValue, setCheckedValue] = useState();
+  const changeHandler = (e) => {
+    setCheckedValue(e.target.value);
+  };
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(checkedValue);
+  };
+  return (
+    <form onSubmit={formSubmitHandler}>
+      <div className="flex-center role-box">
+        <div className="title">{name} :</div>
+        <div className="btn-group" onChange={changeHandler}>
+          <div>
+            <input type="radio" name={name} id={first} value={first} />
+            <label htmlFor={first}>{first}</label>
+          </div>
+          <div>
+            <input type="radio" name={name} id={second} value={second} />
+            <label htmlFor={second}>{second}</label>
+          </div>
+        </div>
+        <button type="submit" className="update">
+          Update
+        </button>
+      </div>
+    </form>
+  );
+};
+
 const UpdateForm = () => {
   const dispatch = useDispatch();
   const updateFormIsVisible = useSelector(
@@ -79,7 +138,12 @@ const UpdateForm = () => {
           <div className="left-col">
             <ProfilePic />
           </div>
-          <div className="right-col">right</div>
+          <div className="right-col">
+            <UserName />
+            <UserRole name="Role" first="User" second="Admin" />
+            <UserRole name="Status" first="Active" second="Deactive" />
+            <button>delete user</button>
+          </div>
         </div>
       )}
     </>
