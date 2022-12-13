@@ -4,6 +4,7 @@ import "./datatable.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { URL } from "../../App";
+import axios from "axios";
 
 const DataTable = () => {
   const users = useSelector((state) => state.Users.users);
@@ -63,6 +64,20 @@ const DataTable = () => {
     },
   ];
 
+  const userDeleteHandler = (e) => {
+    const DeleteUser = async () => {
+      try {
+        await axios.delete(`${URL}/api/v1/users/${e.target.id}`);
+        setTimeout(() => {
+          window.location.reload();
+        }, 4000);
+      } catch (error) {
+        console.log(`error: `, error);
+      }
+    };
+    DeleteUser();
+  };
+
   const actionColumn = [
     {
       field: "action",
@@ -77,7 +92,13 @@ const DataTable = () => {
             >
               <div className="viewButton">View</div>
             </Link>
-            <div className="deleteButton">Delete</div>
+            <div
+              className="deleteButton"
+              id={params.row.id}
+              onClick={userDeleteHandler}
+            >
+              Delete
+            </div>
           </div>
         );
       },

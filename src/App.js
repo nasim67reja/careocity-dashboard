@@ -19,8 +19,8 @@ import OrderDataTabel from "./components/datatable/OrderDataTabel";
 
 axios.defaults.withCredentials = true; //it's for getting and storing cookies in browser for future request
 
-// export const URL = "http://127.0.0.1:8000";
-export const URL = "https://e-commerceapi.up.railway.app";
+export const URL = "http://127.0.0.1:8000";
+// export const URL = "https://e-commerceapi.up.railway.app";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -53,7 +53,10 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="users">
-            <Route index element={<List dataTable={<DataTable />} />} />
+            <Route
+              index
+              element={<List name="User" dataTable={<DataTable />} />}
+            />
             <Route
               path=":userId"
               element={<Single userProp={<UserInfo />} />}
@@ -64,7 +67,10 @@ const App = () => {
             />
           </Route>
           <Route path="products">
-            <Route index element={<List dataTable={<ProductDataTab />} />} />
+            <Route
+              index
+              element={<List name="Product" dataTable={<ProductDataTab />} />}
+            />
             <Route
               path=":productId"
               element={<Single userProp={<ProductInfo />} />}

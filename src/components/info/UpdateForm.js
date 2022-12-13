@@ -11,6 +11,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const ProfilePic = () => {
   const curUser = useSelector((state) => state.Users.curUser);
+  const params = useParams();
 
   const [userPhoto, setUserPhoto] = useState({
     photo: "",
@@ -19,15 +20,15 @@ const ProfilePic = () => {
   const formSubmissionHandler = async (event) => {
     event.preventDefault();
 
-    // const formData = new FormData();
-    // formData.append("photo", userPhoto.photo);
-    // try {
-    //   await axios.patch(`${URL}/api/v1/users/updateMe`, formData);
-    //   document.location.reload();
-    // } catch (error) {
-    //   console.log(`error: `, error);
-    //   // setError(error.response.data.message);
-    // }
+    const formData = new FormData();
+    formData.append("photo", userPhoto.photo);
+    try {
+      await axios.patch(`${URL}/api/v1/users/${params.userId}`, formData);
+      document.location.reload();
+    } catch (error) {
+      console.log(`error: `, error);
+      // setError(error.response.data.message);
+    }
   };
 
   return (
@@ -64,7 +65,6 @@ const ProfilePic = () => {
 const UserName = ({ name }) => {
   const [inputIsVisible, setInputIsVisible] = useState(false);
   const curUser = useSelector((state) => state.Users.curUser);
-  console.log(curUser);
   const [enteredValue, setEnteredValue] = useState("");
   const [result, setResult] = useState("");
   const params = useParams();
