@@ -1,0 +1,62 @@
+.create-user {
+  position: absolute;
+  z-index: 11;
+  background-color: #fff;
+  left: 20%;
+  top: 20%;
+  border-radius: 0.5rem;
+  width: 60%;
+  .create-user__form {
+    display: flex;
+    align-items: center;
+    padding: 4rem 3rem;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 4rem;
+    .input-img {
+      // display: flex;
+      // flex-direction: column;
+      // gap: 2rem;
+      // flex: 1;
+      img {
+        border-radius: 50%;
+        // width: 80%;
+        margin-bottom: 1rem;
+      }
+      div {
+        text-align: center;
+        label {
+          padding: 0.4rem 1rem;
+          cursor: pointer;
+          text-align: center;
+          border-radius: 5px;
+          font-size: 1.2rem;
+        }
+      }
+    }
+    .input-other {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      align-items: start;
+      .radio-label {
+        font-size: 1.2rem;
+        margin-left: 6px;
+      }
+      .input-other-boxes {
+        input {
+          outline: none;
+          border: none;
+          border-bottom: 1px solid silver;
+          padding: 0.5rem 1rem;
+          &::placeholder {
+            font-size: 1.1rem;
+          }
+        }
+      }
+      .flex-center {
+        gap: 4rem;
+      }
+    }
+  }
+}

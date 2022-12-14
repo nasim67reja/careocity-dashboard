@@ -14,10 +14,10 @@ const List = ({ dataTable, name }) => {
         <Backdrop />,
         document.getElementById("backdrop-root")
       )}
-      {/* {ReactDOM.createPortal(
+      {ReactDOM.createPortal(
         <CreateUser />,
         document.getElementById("ovarlay-root")
-      )} */}
+      )}
       <div className="list">
         <Sidebar />
         <div className="listContainer">
