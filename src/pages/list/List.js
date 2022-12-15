@@ -6,8 +6,11 @@ import Navbar from "../../components/navbar/Navbar";
 import Backdrop from "../../components/Other/Backdrop";
 import CreateUser from "../../components/Other/CreateUser";
 // import DataTable from "../../components/datatable/DataTable";
+import { overlayActions } from "../../store/Ovarlay";
+import { useDispatch } from "react-redux";
 
 const List = ({ dataTable, name }) => {
+  const dispatch = useDispatch();
   return (
     <>
       {ReactDOM.createPortal(
@@ -25,7 +28,15 @@ const List = ({ dataTable, name }) => {
           {name && (
             <header className="header">
               <h3>{name}s</h3>
-              <button className="btn">Add new {name}</button>
+              <button
+                className="btn"
+                onClick={() => {
+                  dispatch(overlayActions.backdropVisible(true));
+                  dispatch(overlayActions.createUserFormIsVisiblity(true));
+                }}
+              >
+                Add new {name}
+              </button>
             </header>
           )}
           {dataTable}

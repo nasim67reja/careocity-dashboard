@@ -52,6 +52,10 @@ button {
   transition: all 0.3s;
 }
 
+input[type="file"] {
+  display: none;
+}
+
 .submit:hover,
 .btn:hover {
   opacity: 0.7;

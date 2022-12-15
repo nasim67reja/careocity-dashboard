@@ -23,13 +23,14 @@ const Backdrop = () => {
             position: "fixed",
             height: "100%",
             width: "100%",
-            cursor: "pointer",
+            // cursor: "pointer",
             zIndex: "10",
             backgroundColor: "rgba(0, 0, 0, 0.6)",
           }}
           onClick={() => {
             dispatch(overlayActions.backdropVisible(false));
             dispatch(overlayActions.updateFormVisiblity(false));
+            dispatch(overlayActions.createUserFormIsVisiblity(false));
           }}
         ></div>
       )}
