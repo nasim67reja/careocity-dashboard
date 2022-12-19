@@ -6,15 +6,13 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./single.scss";
 import Loader from "../../components/Other/Loader";
+import { UpdateDate } from "../../components/Other/Reuse";
 
 const Single = ({ userProp }) => {
   const params = useParams();
-  // console.log(params.userId);
   const orders = useSelector((state) => state.Orders.orders);
-
-  // console.log(orders);
   const userOrder = orders?.filter((el) => el.user._id === params.userId);
-  // console.log(userOrder && userOrder.length);
+  const userOrderWithUpdateDate = UpdateDate(userOrder);
 
   return (
     <div className="single">
@@ -29,9 +27,11 @@ const Single = ({ userProp }) => {
         </div>
         <div className="bottom">
           <h1 className="title">Last Transactions</h1>
-          {!userOrder && <Loader />}
-          {userOrder && userOrder.length > 0 && <Table userOrder={userOrder} />}
-          {userOrder && userOrder.length < 1 && (
+          {!userOrderWithUpdateDate && <Loader />}
+          {userOrderWithUpdateDate && userOrderWithUpdateDate.length > 0 && (
+            <Table userOrder={userOrderWithUpdateDate} />
+          )}
+          {userOrderWithUpdateDate && userOrderWithUpdateDate.length < 1 && (
             <div className="flex-center">
               This user didn't buy any product yet 😢
             </div>

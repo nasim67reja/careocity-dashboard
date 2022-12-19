@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { useSelector } from "react-redux";
 
 const data = [
   { name: "January", Total: 1200 },
@@ -19,6 +20,41 @@ const data = [
 ];
 
 const Chart = ({ aspect, title }) => {
+  const Orders = useSelector((state) => state.Orders.orders);
+  // console.log(Orders);
+
+  // console.log(Date.now());
+  // const date = new Date("2022-12-05T08:34:10.775Z");
+  // console.log(Date.now() - date.getTime());
+
+  const orderDateUpdate = Orders?.map((el) => {
+    const date = new Date(el.createdAt);
+    const options = {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    };
+    const local = navigator.language;
+
+    const formatDate = new Intl.DateTimeFormat(local, options).format(date);
+    return { ...el, date: formatDate };
+  });
+
+  const now = new Date();
+  // console.log(now);
+  const options = {
+    // hour: "numeric",
+    // minute: "numeric",
+    day: "numeric",
+    month: "long", // 2-digit,long exist
+    year: "numeric", // 2-digit exist
+    // weekday: "short", // long & narrow exist
+  };
+  const local = navigator.language;
+  // console.log(local);
+  const formatDate = new Intl.DateTimeFormat(local, options).format(now);
+  // console.log(formatDate);
+
   return (
     <div className="chart">
       <div className="title">{title}</div>

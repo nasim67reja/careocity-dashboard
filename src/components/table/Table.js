@@ -43,7 +43,7 @@ const List = ({ userOrder }) => {
                   </div>
                 </TableCell>
                 <TableCell className="tableCell">{order.user.name}</TableCell>
-                <TableCell className="tableCell">{order.createdAt}</TableCell>
+                <TableCell className="tableCell">{order.date}</TableCell>
                 <TableCell className="tableCell">{order.price}</TableCell>
                 <TableCell className="tableCell">Online</TableCell>
                 <TableCell className="tableCell">

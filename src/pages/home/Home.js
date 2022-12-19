@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Chart from "../../components/chart/Chart";
 import Featured from "../../components/featured/Featured";
 import Navbar from "../../components/navbar/Navbar";
+import { UpdateDate } from "../../components/Other/Reuse";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Table from "../../components/table/Table";
 import Widget from "../../components/widget/Widget";
@@ -10,14 +11,13 @@ import "./home.scss";
 
 const Home = () => {
   const users = useSelector((state) => state.Users.users);
-  // const user = useSelector((state) => state.Users.user);
   const Orders = useSelector((state) => state.Orders.orders);
+
+  const orderDateUpdate = UpdateDate(Orders);
 
   const Earnings =
     Orders &&
     Math.round(Orders.map((el) => el.price).reduce((acc, cur) => acc + cur));
-
-  // const products = useSelector((state) => state.allProducts.allProducts);
 
   return (
     <div className="home">
@@ -36,7 +36,7 @@ const Home = () => {
         </div>
         <div className="listContainer">
           <div className="listTitle">Latest Transactions</div>
-          <Table userOrder={Orders} />
+          <Table userOrder={orderDateUpdate} />
         </div>
       </div>
     </div>
