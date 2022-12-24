@@ -24,8 +24,6 @@ const ProductInfo = () => {
     getProducts();
   }, [getProducts]);
 
-  console.log(product);
-
   return (
     <div className="left">
       <div className="editButton">Edit</div>

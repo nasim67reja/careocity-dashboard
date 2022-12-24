@@ -9,24 +9,20 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useSelector } from "react-redux";
+// import { UpdateDate } from "../Other/Reuse";
+import { useParams } from "react-router-dom";
 
-// const data = [
-//   { name: "January", Total: 1200 },
-//   { name: "February", Total: 2100 },
-//   { name: "March", Total: 800 },
-//   { name: "April", Total: 1600 },
-//   { name: "May", Total: 900 },
-//   { name: "June", Total: 1700 },
-// ];
+const Chart = ({ aspect, title, filterBy }) => {
+  const params = useParams();
 
-const Chart = ({ aspect, title }) => {
-  const Orders = useSelector((state) => state.Orders.orders);
-  // console.log(Orders);
+  let Orders = useSelector((state) => state.Orders.orders);
 
-  // console.log(Date.now());
-  // const date = new Date("2022-12-05T08:34:10.775Z");
-  // console.log(Date.now() - date.getTime());
-
+  if (filterBy) {
+    if (filterBy === "user")
+      Orders = Orders?.filter((el) => el.user._id === params.userId);
+    else if (filterBy === "product")
+      Orders = Orders?.filter((el) => el.product._id === params.productId);
+  }
   const orderDateUpdate = Orders?.map((el) => {
     const date = new Date(el.createdAt);
     const options = {

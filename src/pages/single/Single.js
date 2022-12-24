@@ -8,7 +8,7 @@ import "./single.scss";
 import Loader from "../../components/Other/Loader";
 import { UpdateDate } from "../../components/Other/Reuse";
 
-const Single = ({ userProp }) => {
+const Single = ({ userProp, filterBy }) => {
   const params = useParams();
   const orders = useSelector((state) => state.Orders.orders);
   const userOrder = orders?.filter((el) => el.user._id === params.userId);
@@ -22,7 +22,11 @@ const Single = ({ userProp }) => {
         <div className="top">
           {userProp}
           <div className="right">
-            <Chart aspect={3 / 2} title="User Spending ( Last 6 Months)" />
+            <Chart
+              aspect={3 / 2}
+              title="User Spending ( Last 6 Months)"
+              filterBy={filterBy}
+            />
           </div>
         </div>
         <div className="bottom">
