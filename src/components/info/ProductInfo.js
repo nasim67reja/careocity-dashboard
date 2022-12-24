@@ -67,32 +67,6 @@ const ProductInfo = () => {
           </>
         )}
       </div>
-      {/* {user && (
-        <div className="item">
-         
-          <div className="details">
-            <h1 className="itemTitle">{user.name}</h1>
-            <div className="detailItem">
-              <span className="itemKey">Email:</span>
-              <span className="itemValue">{user.email}</span>
-            </div>
-            <div className="detailItem">
-              <span className="itemKey">Role:</span>
-              <span className="itemValue">{user.role}</span>
-            </div>
-            <div className="detailItem">
-              <span className="itemKey">Status:</span>
-              <span className="itemValue">
-                {`${user.active ? "Active" : "Deactive"}`}
-              </span>
-            </div>
-            <div className="detailItem">
-              <span className="itemKey">Country:</span>
-              <span className="itemValue">USA</span>
-            </div>
-          </div>
-        </div>
-      )} */}
     </div>
   );
 };

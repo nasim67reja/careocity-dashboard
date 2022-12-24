@@ -10,8 +10,14 @@ import { UpdateDate } from "../../components/Other/Reuse";
 
 const Single = ({ userProp, filterBy }) => {
   const params = useParams();
+
   const orders = useSelector((state) => state.Orders.orders);
-  const userOrder = orders?.filter((el) => el.user._id === params.userId);
+
+  const userOrder = orders?.filter((el) => {
+    if (params.productId) return el.product._id === params.productId;
+    else if (params.userId) return el.user._id === params.userId;
+    else return null;
+  });
   const userOrderWithUpdateDate = UpdateDate(userOrder);
 
   return (
@@ -24,7 +30,11 @@ const Single = ({ userProp, filterBy }) => {
           <div className="right">
             <Chart
               aspect={3 / 2}
-              title="User Spending ( Last 6 Months)"
+              title={
+                filterBy === "user"
+                  ? "User Spending ( Last 6 Months)"
+                  : "Product Revenue(Last 6 Months)"
+              }
               filterBy={filterBy}
             />
           </div>
