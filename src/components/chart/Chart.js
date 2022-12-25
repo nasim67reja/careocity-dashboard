@@ -9,7 +9,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useSelector } from "react-redux";
-// import { UpdateDate } from "../Other/Reuse";
 import { useParams } from "react-router-dom";
 
 const Chart = ({ aspect, title, filterBy }) => {
@@ -34,18 +33,18 @@ const Chart = ({ aspect, title, filterBy }) => {
     return { ...el, month: formatDate, indexMonth: date.getMonth() };
   });
 
-  let January,
-    February,
-    March,
-    April,
-    May,
-    June,
-    July,
-    August,
-    September,
-    October,
-    November,
-    December = [];
+  let January = [];
+  let February = [];
+  let March = [];
+  let April = [];
+  let May = [];
+  let June = [];
+  let July = [];
+  let August = [];
+  let September = [];
+  let October = [];
+  let November = [];
+  let December = [];
 
   orderDateUpdate?.forEach((order) => {
     order.indexMonth === 0

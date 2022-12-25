@@ -1,0 +1,11 @@
+.stats {
+  display: flex;
+  .homeContainer {
+    flex: 6;
+    .charts {
+      gap: 4rem;
+      display: flex;
+      padding: 4rem 1rem;
+    }
+  }
+}
