@@ -95,6 +95,16 @@ const Sidebar = () => {
         <div className="colorOption"></div>
         <div className="colorOption"></div>
       </div>
+      <div className="flex-center">
+        <a
+          href="https://nasim67reja.github.io/CareoCIty-ecommerce/"
+          className="switch"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Switch to App ➡
+        </a>
+      </div>
     </div>
   );
 };

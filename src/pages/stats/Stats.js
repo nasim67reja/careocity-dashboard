@@ -9,13 +9,15 @@ import {
   Tooltip,
   Line,
   ResponsiveContainer,
+  BarChart,
+  Bar,
 } from "recharts";
 import Chart from "../../components/chart/Chart";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./stats.scss";
 
-const LineChartCustom = ({ aspect, title }) => {
+const UserStats = ({ aspect, title }) => {
   const users = useSelector((state) => state.Users.users);
 
   const usersUpdateDate = users?.map((el) => {
@@ -118,6 +120,60 @@ const LineChartCustom = ({ aspect, title }) => {
   );
 };
 
+const ProductStats = ({ title, aspect }) => {
+  const data = [
+    {
+      name: "Page A",
+      pv: 2400,
+    },
+    {
+      name: "Page B",
+      pv: 1398,
+    },
+    {
+      name: "Page C",
+      pv: 9800,
+    },
+    {
+      name: "Page D",
+      pv: 3908,
+    },
+    {
+      name: "Page E",
+      pv: 4800,
+    },
+    {
+      name: "Page F",
+      pv: 3800,
+    },
+    {
+      name: "Page G",
+      pv: 4300,
+    },
+  ];
+
+  return (
+    <div className="chart">
+      <div className="title">{title}</div>
+
+      <ResponsiveContainer width="100%" aspect={aspect}>
+        <BarChart
+          width={730}
+          height={250}
+          data={data}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="pv" fill="#8884d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
+
 const Stats = () => {
   return (
     <div className="stats">
@@ -126,7 +182,14 @@ const Stats = () => {
         <Navbar />
         <div className="charts">
           <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
-          <LineChartCustom title="Last 6 Months User stats" aspect={2 / 1} />
+          <UserStats title="Last 6 Months User stats" aspect={2 / 1} />
+        </div>
+        <div className="charts">
+          <ProductStats
+            title="Last 6 Months Product stats (top rated)"
+            aspect={2 / 1}
+          />
+          <ProductStats title="Last 6 Months User stats" aspect={2 / 1} />
         </div>
       </div>
     </div>
