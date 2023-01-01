@@ -16,7 +16,7 @@ import { truncateString } from "../Other/Reuse";
 // };
 
 const ProductDataTab = () => {
-  const Products = useSelector((state) => state.allProducts.allProducts);
+  const Products = useSelector((state) => state.Products.Products);
 
   const newProudcts = Products?.map((el, i) => {
     return { ...el, newId: i + 1 };

@@ -16,6 +16,7 @@ import Chart from "../../components/chart/Chart";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./stats.scss";
+import { truncateString } from "../../components/Other/Reuse";
 
 const UserStats = ({ aspect, title }) => {
   const users = useSelector((state) => state.Users.users);
@@ -121,55 +122,35 @@ const UserStats = ({ aspect, title }) => {
 };
 
 const ProductStats = ({ title, aspect }) => {
-  const data = [
-    {
-      name: "Page A",
-      pv: 2400,
-    },
-    {
-      name: "Page B",
-      pv: 1398,
-    },
-    {
-      name: "Page C",
-      pv: 9800,
-    },
-    {
-      name: "Page D",
-      pv: 3908,
-    },
-    {
-      name: "Page E",
-      pv: 4800,
-    },
-    {
-      name: "Page F",
-      pv: 3800,
-    },
-    {
-      name: "Page G",
-      pv: 4300,
-    },
-  ];
+  const products = useSelector((state) => state.Products.Products);
+
+  const data = products
+    ?.slice()
+    .sort((a, b) => b.sell - a.sell)
+    .slice(0, 9)
+    .map((el) => {
+      return { name: truncateString(el.name, 7), sell: el.sell };
+    });
 
   return (
     <div className="chart">
       <div className="title">{title}</div>
-
-      <ResponsiveContainer width="100%" aspect={aspect}>
-        <BarChart
-          width={730}
-          height={250}
-          data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey="pv" fill="#8884d8" />
-        </BarChart>
-      </ResponsiveContainer>
+      {data && (
+        <ResponsiveContainer width="80%" aspect={aspect}>
+          <BarChart
+            width={730}
+            height={250}
+            data={data}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis className="name" dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="sell" fill="#8884d8" />
+          </BarChart>
+        </ResponsiveContainer>
+      )}
     </div>
   );
 };
@@ -186,10 +167,9 @@ const Stats = () => {
         </div>
         <div className="charts">
           <ProductStats
-            title="Last 6 Months Product stats (top rated)"
+            title="Last 6 Months Product stats (top sell)"
             aspect={2 / 1}
           />
-          <ProductStats title="Last 6 Months User stats" aspect={2 / 1} />
         </div>
       </div>
     </div>
