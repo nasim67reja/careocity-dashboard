@@ -42,7 +42,7 @@ const List = ({ userOrder }) => {
                     {truncateString(order.product.name, 20)}
                   </div>
                 </TableCell>
-                <TableCell className="tableCell">{order.user.name}</TableCell>
+                <TableCell className="tableCell">{order.status}</TableCell>
                 <TableCell className="tableCell">{order.date}</TableCell>
                 <TableCell className="tableCell">{order.price}</TableCell>
                 <TableCell className="tableCell">Online</TableCell>
