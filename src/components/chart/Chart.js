@@ -18,7 +18,7 @@ const Chart = ({ aspect, title, filterBy }) => {
 
   if (filterBy) {
     if (filterBy === "user")
-      Orders = Orders?.filter((el) => el.user._id === params.userId);
+      Orders = Orders?.filter((el) => el.user?._id === params.userId);
     else if (filterBy === "product")
       Orders = Orders?.filter((el) => el.product._id === params.productId);
   }

@@ -15,9 +15,10 @@ const Single = ({ userProp, filterBy }) => {
 
   const userOrder = orders?.filter((el) => {
     if (params.productId) return el.product._id === params.productId;
-    else if (params.userId) return el.user._id === params.userId;
+    else if (params.userId) return el.user?._id === params.userId;
     else return null;
   });
+
   const userOrderWithUpdateDate = UpdateDate(userOrder);
 
   return (

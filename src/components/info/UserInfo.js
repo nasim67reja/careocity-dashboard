@@ -16,7 +16,7 @@ const UserInfo = () => {
   const dispatch = useDispatch();
   const curUser = useSelector((state) => state.Users.curUser);
   const curUserOrder = useSelector((state) => state.Orders.orders)?.filter(
-    (el) => el.user._id === params.userId
+    (el) => el.user?._id === params.userId
   );
 
   const getUser = useCallback(async () => {

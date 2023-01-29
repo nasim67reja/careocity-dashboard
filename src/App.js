@@ -23,8 +23,8 @@ import Stats from "./pages/stats/Stats";
 
 axios.defaults.withCredentials = true; //it's for getting and storing cookies in browser for future request
 
-// export const URL = "http://127.0.0.1:8000";
-export const URL = "https://e-commerceapi.up.railway.app";
+export const URL = "http://127.0.0.1:8000";
+// export const URL = "https://e-commerceapi.up.railway.app";
 
 const App = () => {
   const [userIsPresent, setUserIsPresent] = useState(true);
