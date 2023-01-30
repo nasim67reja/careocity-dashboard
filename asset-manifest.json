@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/careocity-dashboard/static/css/main.a9129ad1.css",
-    "main.js": "/careocity-dashboard/static/js/main.42d44b2b.js",
+    "main.css": "/careocity-dashboard/static/css/main.95e69f81.css",
+    "main.js": "/careocity-dashboard/static/js/main.8a7e6cb5.js",
     "index.html": "/careocity-dashboard/index.html",
-    "main.a9129ad1.css.map": "/careocity-dashboard/static/css/main.a9129ad1.css.map",
-    "main.42d44b2b.js.map": "/careocity-dashboard/static/js/main.42d44b2b.js.map"
+    "main.95e69f81.css.map": "/careocity-dashboard/static/css/main.95e69f81.css.map",
+    "main.8a7e6cb5.js.map": "/careocity-dashboard/static/js/main.8a7e6cb5.js.map"
   },
   "entrypoints": [
-    "static/css/main.a9129ad1.css",
-    "static/js/main.42d44b2b.js"
+    "static/css/main.95e69f81.css",
+    "static/js/main.8a7e6cb5.js"
   ]
 }
